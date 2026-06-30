@@ -8,7 +8,6 @@ import logging
 app = Flask(__name__)
 CORS(app)
 
-# Task 2: Complete integration of logging middleware in this project
 logging.basicConfig(level=logging.INFO)
 
 @app.before_request
@@ -70,7 +69,6 @@ def knapsack(tasks, max_hours):
 
 @app.route("/notifications", methods=["GET"])
 def notification_system():
-    # TASK 1: Mocked data so it's visible in the browser without Authorization header
     notifications = [
         {"id": 1, "message": "Notification 1: Your placement result is out.", "isRead": False},
         {"id": 2, "message": "Notification 2: System maintenance scheduled.", "isRead": True}
@@ -84,7 +82,6 @@ def notification_system():
 
 @app.route("/vehicle_mc", methods=["GET"])
 def vehicle_mc():
-    # TASK 2: Vehicle Maintenance Scheduler (Knapsack)
     urls = request.args.get('url')
     data = {}
     
@@ -95,7 +92,6 @@ def vehicle_mc():
     
     vehicles = data.get("vehicles", [])
     if not vehicles:
-        # Fallback mock data if the test_server is not reachable
         vehicles = [
             {"TaskID": "264e---", "Duration": 1, "Impact": 5},
             {"TaskID": "task2", "Duration": 2, "Impact": 10},
@@ -115,7 +111,6 @@ def vehicle_mc():
 
 @app.route("/task3", methods=["GET"])
 def task3_query():
-    # TASK 3: Optimized Database Query Results
     query = """
     SELECT DISTINCT studentID 
     FROM notifications 
